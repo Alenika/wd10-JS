@@ -67,6 +67,12 @@ let countToString = '' + count;
 let userNameToNumber = +userName;
 console.log(typeof(countToString));
 console.log(typeof(userNameToNumber));
+
+//Solution 3
+let countToString = String(count);
+let userNameToNumber = Number(userName);
+console.log(typeof(countToString));
+console.log(typeof(userNameToNumber));
 ```
 
 #### Task 4 💻
