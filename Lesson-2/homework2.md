@@ -107,6 +107,7 @@ if (userInputYear !== null && userInputYear !== "" && !isNaN(userInputYear)) {
    console.log("Ошибка! Введите корректное значение года.");
 }
 ```
+
 #### Task 4 💻
 
 Запросить у пользователя число: 
@@ -145,6 +146,7 @@ if (userInpuANumber !== null && userInputANumber !== "") {
 `console.error()`)
 
 > используйте метод для определения високосного года из задания 3
+
 
 ```javascript
 // Solution 
@@ -246,6 +248,7 @@ if (userInputNumber !== null && userInputNumber !== "" && !isNaN(userInputNumber
     #####
     ######
 ```
+
 ```javascript
     let stairs = "";
     let row = 6;
