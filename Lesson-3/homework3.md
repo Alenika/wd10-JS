@@ -73,18 +73,16 @@ console.log(`Переплата по кредиту на сумму ${userLoanAm
 function getSum(a, b) {
 
     let sum = 0;
+    let smallerNumber = a;
+    let largerNumber = b;
 
-    if (a === b) {
-        return a;
+    if (a > b) {
+        smallerNumber = b;
+        largerNumber = a;
     }
-    if (a < b) {
-        for (let i = a; i <= b; i++) {
+
+    for (let i = smallerNumber; i <= largerNumber; i++) {
         sum += i;
-        }
-    } else {
-        for (let i = b; i <= a; i++) {
-        sum += i;
-        }
     }
     return sum;
 }
