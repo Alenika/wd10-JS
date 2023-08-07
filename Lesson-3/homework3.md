@@ -123,6 +123,9 @@ function foo() {
 function boo() {
     console.log('boo');
 }
+
+fooboo(true, foo, boo); // "foo"
+fooboo(false, foo, boo); // "boo"
 ```
 
 #### Task 5 💻
