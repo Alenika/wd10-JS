@@ -165,14 +165,7 @@ console.log(safeMul(5, "5"));
 
 // Можно построить треугольник: a + b > c, b + c > a, a + c > b
 
-function buildATriangle (a, b, c) {
-
-    if (a + b > c && b + c > a && a + c > b) {
-        return true;
-    } else {
-        return false;
-    }
-}
+let buildATriangle = (a, b, c) => a + b > c && b + c > a && a + c > b;
 
 console.log(buildATriangle(10, 10, 10)); // true
 console.log(buildATriangle(1, 2, 5));  // false
