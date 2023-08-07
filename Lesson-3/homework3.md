@@ -73,18 +73,16 @@ console.log(`Переплата по кредиту на сумму ${userLoanAm
 function getSum(a, b) {
 
     let sum = 0;
+    let smallerNumber = a;
+    let largerNumber = b;
 
-    if (a === b) {
-        return a;
+    if (a > b) {
+        smallerNumber = b;
+        largerNumber = a;
     }
-    if (a < b) {
-        for (let i = a; i <= b; i++) {
+
+    for (let i = smallerNumber; i <= largerNumber; i++) {
         sum += i;
-        }
-    } else {
-        for (let i = b; i <= a; i++) {
-        sum += i;
-        }
     }
     return sum;
 }
@@ -125,6 +123,9 @@ function foo() {
 function boo() {
     console.log('boo');
 }
+
+fooboo(true, foo, boo); // "foo"
+fooboo(false, foo, boo); // "boo"
 ```
 
 #### Task 5 💻
@@ -164,14 +165,7 @@ console.log(safeMul(5, "5"));
 
 // Можно построить треугольник: a + b > c, b + c > a, a + c > b
 
-function buildATriangle (a, b, c) {
-
-    if (a + b > c && b + c > a && a + c > b) {
-        return true;
-    } else {
-        return false;
-    }
-}
+let buildATriangle = (a, b, c) => a + b > c && b + c > a && a + c > b;
 
 console.log(buildATriangle(10, 10, 10)); // true
 console.log(buildATriangle(1, 2, 5));  // false
