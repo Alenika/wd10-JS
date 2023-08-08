@@ -14,6 +14,17 @@
 4. Измените значение `name` с `John` на `Фёдор`;
 5. Удалите свойство `#lib_internal_isAdmin`;
 
+```javascript
+// Solution
+const profile = {};
+profile.name = "John";
+profile['#lib_internal_isAdmin'] = true;
+profile.name = "Федор";
+delete profile["#lib_internal_isAdmin"];
+console.log(profile); 
+// name: "Федор"
+// [[Prototype]]: Object
+```
 
 #### Task 2 🖥
 
