@@ -104,6 +104,16 @@ console.log(`Средняя зарплата сотрудников = ${averageS
 ```JS
   isEmpty({}); // true
   isEmpty({ lol: "kek" }); // false
+
+  // Solution
+  function isEmpty(object) {
+    for (let key in object) {
+        console.log("Объект не пуст!");
+        return false; 
+    }
+    console.log("Объект пуст!");
+    return true;
+}
 ```
 
 #### Task 6 🖥
