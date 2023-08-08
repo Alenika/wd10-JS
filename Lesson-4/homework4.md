@@ -63,6 +63,12 @@ C помощью цикла **for in** вывести в консоль снач
 
 > name - John age - 19 isHappy - true
 
+```javascript
+// Solution
+for (let key in student) {
+    console.log(`${key} - ${student[key]}`);
+}
+```
 #### Task 4 🖥
 
 Дан обьект:
