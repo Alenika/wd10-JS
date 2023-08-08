@@ -42,6 +42,11 @@ const colors = {
 
 Вывести в консоль слово красный
 
+```javascript
+// Solution
+console.log(colors['ru pum pu ru rum'].red); // красный
+```
+
 #### Task 3 🖥
 
 Дан обьект:
