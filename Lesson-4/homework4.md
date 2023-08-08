@@ -193,6 +193,23 @@ counter.showCurrent(); // 1
 Дополните результат из задания 8 так, чтобы можно было составить цепочку вызовов:
 
 ```JS
+// Solution
+
+const counter = {
+  count: 0,
+  showCurrent: function() {
+    console.log(this.count);
+    return this;
+    },
+  increment: function() {
+    this.count++;
+    return this;
+    },
+  decrement: function() {
+    this.count--;
+    return this;
+    }
+}
 counter.showCurrent().increment().increment().showCurrent().decrement().showCurrent();
 ```
 
