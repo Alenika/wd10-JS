@@ -218,6 +218,27 @@ counter.showCurrent().increment().increment().showCurrent().decrement().showCurr
 Сделайте функцию-конструктор `Counter()`, которая сможет создавать счётчики из заданий 8-9:
 
 ```JS
+// Solution
+
+function Counter() {
+  this.count = 0;
+
+  this.showCurrent = function() {
+    console.log(this.count);
+    return this;
+  };
+
+  this.increment = function() {
+    this.count++;
+    return this;
+  };
+
+  this.decrement = function() {
+    this.count--;
+    return this;
+  };
+}
+
 const counter1 = new Counter();
 const counter2 = new Counter();
 
