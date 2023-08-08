@@ -84,6 +84,19 @@ for (let key in student) {
 ```
 Вычислите среднюю зарплату сотрудников
 
+```javascript
+let sumSalaries = 0;
+let countEmployees = 0;
+
+for (let key in salaries) {
+    sumSalaries += salaries[key];
+    countEmployees++;
+}
+
+const averageSalary = sumSalaries / countEmployees;
+console.log(`Средняя зарплата сотрудников = ${averageSalary}`); // Средняя зарплата сотрудников = 552.6
+```
+
 #### Task 5 🖥
 
 Напишите функцию `isEmpty()`, которая вернёт `true`, если переданный в неё объект пуст (не содержит свойств).
