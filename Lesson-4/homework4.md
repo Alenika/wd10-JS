@@ -166,6 +166,20 @@ alert( user.self.name ); // Каким будет результат?
 Также в объекте должно быть два метода для уменьшения и увеличения значения:
 
 ```JS
+// Solution 
+const counter = {
+  count: 0,
+  showCurrent: function() {
+    console.log(this.count);
+  },
+  increment: function() {
+    this.count++;
+  },
+  decrement: function() {
+    this.count--;
+  }
+};
+
 counter.showCurrent(); // 0 - вывод в консоль
 counter.increment();
 counter.increment();
