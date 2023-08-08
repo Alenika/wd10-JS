@@ -132,6 +132,7 @@ const animals = {
       age: 2,
    }
 }
+console.log(animals.bird?.name); //undefined
 ```
 
 #### Task 7 🖥
