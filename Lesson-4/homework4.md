@@ -35,7 +35,7 @@ const colors = {
     'ru pum pu ru rum': {
         red: 'красный',
         green: 'зеленый',
-        blue: 'синий'
+        blue: 'синий',
     },
 };
 ```
@@ -55,7 +55,7 @@ console.log(colors['ru pum pu ru rum'].red); // красный
     const student = {
         name: 'John',
         age: 19,
-        isHappy: true
+        isHappy: true,
     }
 ```
 
@@ -79,7 +79,7 @@ for (let key in student) {
         sveta: 413,
         anton: 987,
         alex: 664,
-        alexandra: 199
+        alexandra: 199,
     }
 ```
 Вычислите среднюю зарплату сотрудников
@@ -130,7 +130,7 @@ const animals = {
    dog: {
       name: 'Орео',
       age: 2,
-   }
+   },
 }
 console.log(animals.bird?.name); //undefined
 ```
@@ -177,7 +177,7 @@ const counter = {
   },
   decrement: function() {
     this.count--;
-  }
+  },
 };
 
 counter.showCurrent(); // 0 - вывод в консоль
@@ -208,7 +208,7 @@ const counter = {
   decrement: function() {
     this.count--;
     return this;
-    }
+    },
 }
 counter.showCurrent().increment().increment().showCurrent().decrement().showCurrent();
 ```
