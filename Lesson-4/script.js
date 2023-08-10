@@ -283,7 +283,102 @@ student.inspiringMessage = () => console.log('We look forward to serving you the
 student.inspiringMessage
 student.inspiringMessage();
 
+student.inspiringMessage = null;
+student.inspiringMessage = console.log;
+student.inspiringMessage('hi there'); // вызовем console.log
 
+/******************************************/
 
+// This
 
+const profilePerson = {     // profilePerson хранит ссылку на объект
+    name: 'Alena',
+    greet() {
+        console.log(`${this.name} говорит "Привет!"`);
+    },
+    sayHi () {
+        console.log(this.name + ': hi!');
+    },
+}
 
+profilePerson.greet(); // Alena говорит "Привет!"
+profilePerson.sayHi(); // Alena: hi!
+
+// Динамическая природа this
+
+const profileAnimal = {
+    name: 'Айдар',
+    type: 'Собака',
+}
+
+const greet = function () {
+    console.log(`${this.name} говорит "Привет!" `);
+}
+
+profilePerson.sayHi = greet;
+profileAnimal.sayHi = greet;
+
+profilePerson.sayHi(); // Alena говорит "Привет!" 
+profileAnimal.sayHi(); // Айдар говорит "Привет!" 
+
+// this - это всегда объект до '.' (если функция вызвана из объекта)
+
+// если функция вызвана сама по себе и в ней есть this -> window или global
+
+// "use strict" - this будет undefined
+
+/******************************************/
+
+// НЕ ИСПОЛЬЗОВАТЬ VAR !!!
+
+/* 
+Переменные, объявленные с использованием var, имеют область видимости на уровне функции (если переменная объявлена внутри функции) или на уровне глобального контекста (если объявлена вне функции). 
+
+Кроме того, они обладают поднятием (hoisting) - это означает, что их объявление поднимается в начало области видимости. Переменные var также могут быть записаны в объект window при объявлении в глобальной области видимости.
+*/
+
+/******************************************/
+
+// Стрелочные функции и this
+
+// У стрелочных функций нет this.
+
+const profile13 = {
+    name: 'Иван',
+    sayHi () {
+        // this <- sayHi()
+        // const this = profile13; (неявно)
+        const arrow = () => console.log(this.name);
+        arrow();
+    },
+}
+
+profile13.sayHi(); // Иван
+
+/******************************************/
+
+// ВОПРОС с СОБЕСЕДОВАНИЯ
+
+const profile14 = {
+    name: "Stella",
+    greet: () => {
+        console.log(this.name);
+    }
+}
+
+profile14.greet(); // пустая строка
+
+// нестрогий режим this = globalThis = window. Консоль работает в нестрогом режиме!!!
+
+const greet2 = () => {
+    console.log(this.name);
+}
+
+const profile15 = {
+    name: "Mark",
+    greet2,
+}
+
+profile15.greet2(); // пустая строка
+
+// window.name - это пустая строка
