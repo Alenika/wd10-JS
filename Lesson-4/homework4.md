@@ -14,6 +14,17 @@
 4. Измените значение `name` с `John` на `Фёдор`;
 5. Удалите свойство `#lib_internal_isAdmin`;
 
+```javascript
+// Solution
+const profile = {};
+profile.name = "John";
+profile['#lib_internal_isAdmin'] = true;
+profile.name = "Федор";
+delete profile["#lib_internal_isAdmin"];
+console.log(profile); 
+// name: "Федор"
+// [[Prototype]]: Object
+```
 
 #### Task 2 🖥
 
@@ -24,12 +35,17 @@ const colors = {
     'ru pum pu ru rum': {
         red: 'красный',
         green: 'зеленый',
-        blue: 'синий'
+        blue: 'синий',
     },
 };
 ```
 
 Вывести в консоль слово красный
+
+```javascript
+// Solution
+console.log(colors['ru pum pu ru rum'].red); // красный
+```
 
 #### Task 3 🖥
 
@@ -39,7 +55,7 @@ const colors = {
     const student = {
         name: 'John',
         age: 19,
-        isHappy: true
+        isHappy: true,
     }
 ```
 
@@ -47,6 +63,12 @@ C помощью цикла **for in** вывести в консоль снач
 
 > name - John age - 19 isHappy - true
 
+```javascript
+// Solution
+for (let key in student) {
+    console.log(`${key} - ${student[key]}`);
+}
+```
 #### Task 4 🖥
 
 Дан обьект:
@@ -57,10 +79,23 @@ C помощью цикла **for in** вывести в консоль снач
         sveta: 413,
         anton: 987,
         alex: 664,
-        alexandra: 199
+        alexandra: 199,
     }
 ```
 Вычислите среднюю зарплату сотрудников
+
+```javascript
+let sumSalaries = 0;
+let countEmployees = 0;
+
+for (let key in salaries) {
+    sumSalaries += salaries[key];
+    countEmployees++;
+}
+
+const averageSalary = sumSalaries / countEmployees;
+console.log(`Средняя зарплата сотрудников = ${averageSalary}`); // Средняя зарплата сотрудников = 552.6
+```
 
 #### Task 5 🖥
 
@@ -69,6 +104,16 @@ C помощью цикла **for in** вывести в консоль снач
 ```JS
   isEmpty({}); // true
   isEmpty({ lol: "kek" }); // false
+
+  // Solution
+  function isEmpty(object) {
+    for (let key in object) {
+        console.log("Объект не пуст!");
+        return false; 
+    }
+    console.log("Объект пуст!");
+    return true;
+}
 ```
 
 #### Task 6 🖥
@@ -85,8 +130,9 @@ const animals = {
    dog: {
       name: 'Орео',
       age: 2,
-   }
+   },
 }
+console.log(animals.bird?.name); //undefined
 ```
 
 #### Task 7 🖥
@@ -106,6 +152,15 @@ let user = makeProfile();
 alert( user.self.name ); // Каким будет результат?
 ```
 
+#### ✅ Ответ: 
+* Создается функция `makeProfile()`. Внутри функции создается объект с 2-мя свойствами (`name` со значением `John` и `self` со значением `this`). 
+* `makeProfile()` вызывается как обычная функция, поэтому `this` будет указывать на объект window.
+* Затем создается переменная user, которой присваивается результат вызова функции `makeProfile()`
+* Следовательно объект `user` будет иметь свойство `name` со значением `John`, а свойство `self` будет ссылаться на глобальный объект (window в браузерах, global в Node.js), так как `makeProfile` вызывается как обычная функция, а не как метод объекта.
+* Далее происходит вызов функции `alert( user.self.name )` для того, чтобы вывести значение свойства `name` объекта `self`.
+* В данном случае, `this` ссылается на глобальный объект `window`. У `window` есть свойство `window.name = " "` (пустая строка).
+* Попытка прочитать свойство `name` у `user.self` приведет к ошибке, поскольку свойство `name` не определено для объекта `window.self`, возникает ошибка `"Cannot read property 'name' of undefined"`. 
+
 #### Task 8 🖥
 
 Создайте объект счётчик `counter`, в котором будет записано значение изначально равное `0`.
@@ -113,6 +168,20 @@ alert( user.self.name ); // Каким будет результат?
 Также в объекте должно быть два метода для уменьшения и увеличения значения:
 
 ```JS
+// Solution 
+const counter = {
+  count: 0,
+  showCurrent: function() {
+    console.log(this.count);
+  },
+  increment: function() {
+    this.count++;
+  },
+  decrement: function() {
+    this.count--;
+  },
+};
+
 counter.showCurrent(); // 0 - вывод в консоль
 counter.increment();
 counter.increment();
@@ -126,6 +195,23 @@ counter.showCurrent(); // 1
 Дополните результат из задания 8 так, чтобы можно было составить цепочку вызовов:
 
 ```JS
+// Solution
+
+const counter = {
+  count: 0,
+  showCurrent: function() {
+    console.log(this.count);
+    return this;
+    },
+  increment: function() {
+    this.count++;
+    return this;
+    },
+  decrement: function() {
+    this.count--;
+    return this;
+    },
+}
 counter.showCurrent().increment().increment().showCurrent().decrement().showCurrent();
 ```
 
@@ -134,6 +220,27 @@ counter.showCurrent().increment().increment().showCurrent().decrement().showCurr
 Сделайте функцию-конструктор `Counter()`, которая сможет создавать счётчики из заданий 8-9:
 
 ```JS
+// Solution
+
+function Counter() {
+  this.count = 0;
+
+  this.showCurrent = function() {
+    console.log(this.count);
+    return this;
+  };
+
+  this.increment = function() {
+    this.count++;
+    return this;
+  };
+
+  this.decrement = function() {
+    this.count--;
+    return this;
+  };
+}
+
 const counter1 = new Counter();
 const counter2 = new Counter();
 
